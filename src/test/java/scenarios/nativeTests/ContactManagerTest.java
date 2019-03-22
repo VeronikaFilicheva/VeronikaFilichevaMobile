@@ -13,8 +13,7 @@ import java.util.List;
 
 @Test(groups = "native")
 public class ContactManagerTest extends Hooks {
-
-    // Send PropertyFile in the Hooks to run correct prepareDriver() in @BeforeSuite.
+    // Send PropertyFile in the Hooks to read from correct property file in  prepareDriver() in @BeforeSuite
     protected ContactManagerTest() {
         super(Properties.NATIVE);
     }

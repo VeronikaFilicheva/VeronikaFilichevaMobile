@@ -9,7 +9,7 @@ import io.restassured.RestAssured;
 
 @Test(groups = "web")
 public class IanaWebTest extends Hooks {
-    // Send PropertyFile in the Hooks to run correct prepareDriver() in @BeforeSuite.
+    // Send PropertyFile in the Hooks to read from correct property file in  prepareDriver() in @BeforeSuite.
     protected IanaWebTest() {
         super(Properties.WEB);
     }
