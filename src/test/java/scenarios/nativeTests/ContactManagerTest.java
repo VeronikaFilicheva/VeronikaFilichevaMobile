@@ -21,10 +21,10 @@ public class ContactManagerTest extends Hooks {
     @Test(description = "Open Add Contact screen and check elements displaying")
     public void simplestAddContactScreenTest() throws Exception {
 
-        String app_package_name = "com.example.android.contactmanager:id/";
+        String appPackageName = "com.example.android.contactmanager:id/";
 
         // click on Add Contact Button
-        By addButton = By.id(app_package_name + "addContactButton");
+        By addButton = By.id(appPackageName + "addContactButton");
         driver().findElement(addButton).click();
 
         //Check Add Contact Title
@@ -54,16 +54,16 @@ public class ContactManagerTest extends Hooks {
         }
 
         //Find all necessary fields on "Add Contact" screen
-        WebElement target_account_spinner = driver().findElement(By.id(app_package_name + "accountSpinner"));
-        WebElement contact_name_field = driver().findElement(By.id(app_package_name + "contactNameEditText"));
-        WebElement contact_phone_field = driver().findElement(By.id(app_package_name + "contactPhoneEditText"));
-        WebElement contact_email_field = driver().findElement(By.id(app_package_name + "contactEmailEditText"));
+        WebElement targetAccountSpinner = driver().findElement(By.id(appPackageName + "accountSpinner"));
+        WebElement contactNameField = driver().findElement(By.id(appPackageName + "contactNameEditText"));
+        WebElement contactPhoneField = driver().findElement(By.id(appPackageName + "contactPhoneEditText"));
+        WebElement contactEmailField = driver().findElement(By.id(appPackageName + "contactEmailEditText"));
 
         //Assert all found fields are displayed
-        Assert.assertTrue(target_account_spinner.isDisplayed());
-        Assert.assertTrue(contact_name_field.isDisplayed());
-        Assert.assertTrue(contact_phone_field.isDisplayed());
-        Assert.assertTrue(contact_email_field.isDisplayed());
+        Assert.assertTrue(targetAccountSpinner.isDisplayed());
+        Assert.assertTrue(contactNameField.isDisplayed());
+        Assert.assertTrue(contactPhoneField.isDisplayed());
+        Assert.assertTrue(contactEmailField.isDisplayed());
 
         //Check virtual keyboard appears
         Assert.assertTrue(((HasOnScreenKeyboard) driver()).isKeyboardShown());
