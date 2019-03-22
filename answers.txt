@@ -1,0 +1,6 @@
+5.Modify existing tests to run on a real device. What should be changed?
+Device name should be changed into test.properties file from mobile device name to real device name.
+
+6. Connect a real device to Appium (describe required actions) and run tests. Are there any difference with run on emulator?
+Connect device to PC > Start Appium> Start Server> Check that Desired Capbilites is set for Real Device in Driver Setup(check that the name of device is correct into property file)
+ > Run test
