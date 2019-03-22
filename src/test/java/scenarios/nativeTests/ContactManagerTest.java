@@ -19,7 +19,7 @@ public class ContactManagerTest extends Hooks {
         super(Properties.NATIVE);
     }
 
-    @Test(description = "Open Add Contact screen and check it functionality")
+    @Test(description = "Open Add Contact screen and check elements displaying")
     public void simplestAddContactScreenTest() throws Exception {
 
         String app_package_name = "com.example.android.contactmanager:id/";

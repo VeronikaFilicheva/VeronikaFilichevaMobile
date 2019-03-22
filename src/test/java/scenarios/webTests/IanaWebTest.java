@@ -14,7 +14,7 @@ public class IanaWebTest extends Hooks {
         super(Properties.WEB);
     }
 
-    @Test(description = "Open a site")
+    @Test(description = "Open site")
     public void webTest() throws Exception {
         driver().get(SUT);
         driverWait().until(ExpectedConditions.urlToBe(SUT + "/"));
