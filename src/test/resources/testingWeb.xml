@@ -1,0 +1,13 @@
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd" >
+
+<suite name="Test Suite for Mobile Web Tests" verbose="1">
+
+    <test name="Iana Web Site Test" >
+
+        <classes>
+            <class name="scenarios.webTests.IanaWebTest"></class>
+
+        </classes>
+
+    </test>
+</suite>
