@@ -61,7 +61,6 @@ public class DriverSetup extends TestProperties{
         if(AUT != null && SUT == null){
             // Native
             File app = new File(AUT);
-         //   capabilities.setCapability(APP, app.getAbsolutePath());
             capabilities.setCapability(APP_PACKAGE, APP_PACK);
             capabilities.setCapability(APP_ACTIVITY, APP_ACT);
         }

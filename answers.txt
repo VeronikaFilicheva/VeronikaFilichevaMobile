@@ -6,7 +6,7 @@ Add support of appPackage and appActivity parameters for Android devices (readin
 3.	 Run test with your changes. Did test pass?
 No, it started to pass only after installing the app on the device.
 4.	Try to use autoLaunch capability with app as before instead of appPackage and appActivity. Does this approach work?
-No, because we don't have the possibility to install app via this way. We need to use the Install App function on Mobile Farm.
+No, test falls with exception: "org.openqa.selenium.SessionNotCreatedException: Unable to create a new remote session. Please check the server log for more details. Original error: {"status":13,"value":{"message":"An unknown server-side error occurred while processing the command. Original error: The desired capabilities must include either an app, appPackage or browserName"},"sessionId":null} (WARNING: The server did not provide any stacktrace information)"
 5.	What's wrong with our code? How to fix/improve it? Implement your suggestions.
 I think it is better to have different projects for iOS web tests and Andriod native. These web tests aren't connected with the native android test.
  We don't test app and it's web version here. So that's why they should be different projects.
