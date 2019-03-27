@@ -1,6 +1,12 @@
-5.Modify existing tests to run on a real device. What should be changed?
-Device name should be changed into test.properties file from mobile device name to real device name.
-
-6. Connect a real device to Appium (describe required actions) and run tests. Are there any difference with run on emulator?
-Connect device to PC > Start Appium> Start Server> Check that Desired Capbilites is set for Real Device in Driver Setup(check that the name of device is correct into property file)
- > Run test
+Tasks:
+1.	Change settings to run web test on a certain iOS device in mobile cloud. Run test with your changes. Did test pass?
+Yes, but it is better to use driver.close() in tear down because a device isn't reloaded in this case.
+2.	Change settings to run native test on a certain/random Android device in mobile cloud.
+Add support of appPackage and appActivity parameters for Android devices (reading from a .properties file and then setting in the DesiredCapabilities). Locally installed Appium DT has no need in these parameters, but for Appium server of EPAM mobile cloud it�s mandatory.
+3.	 Run test with your changes. Did test pass?
+No, it started to pass only after installing the app on the device.
+4.	Try to use autoLaunch capability with app as before instead of appPackage and appActivity. Does this approach work?
+No, because we don't have the possibility to install app via this way. We need to use the Install App function on Mobile Farm.
+5.	What's wrong with our code? How to fix/improve it? Implement your suggestions.
+I think it is better to have different projects for iOS web tests and Andriod native. These web tests aren't connected with the native android test.
+ We don't test app and it's web version here. So that's why they should be different projects.
