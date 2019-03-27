@@ -1,6 +1,8 @@
 package setup;
 
 import io.appium.java_client.AppiumDriver;
+import io.appium.java_client.android.AndroidDriver;
+import io.appium.java_client.ios.IOSDriver;
 import io.appium.java_client.remote.MobileCapabilityType;
 import org.openqa.selenium.remote.DesiredCapabilities;
 import org.openqa.selenium.support.ui.WebDriverWait;
@@ -30,7 +32,6 @@ public class DriverSetup extends TestProperties{
 
     protected void prepareDriver() throws Exception {
         TEST_PLATFORM = getProp("platform");
-        DEVICE_NAME = getProp("device");
         DRIVER = getProp("driver");
         AUT = getProp("aut");
         String t_sut = getProp("sut");
@@ -45,26 +46,24 @@ public class DriverSetup extends TestProperties{
         //Check type of test platform to set proper browserName capability
         switch (TEST_PLATFORM) {
             case "Android":
-                capabilities.setCapability(MobileCapabilityType.DEVICE_NAME, DEVICE_NAME);
-                capabilities.setCapability(APP_ACTIVITY, APP_ACT);
-                capabilities.setCapability(APP_PACKAGE,APP_PACK);
-
                 browserName = "Chrome";
                 break;
             case "iOS":
                 browserName = "Safari";
-                capabilities.setCapability(MobileCapabilityType.UDID, UDID);
                 break;
             default:
                 throw new Exception("Unclear type of mobile platform");
         }
         capabilities.setCapability(MobileCapabilityType.PLATFORM_NAME, TEST_PLATFORM);
+        capabilities.setCapability(MobileCapabilityType.UDID, UDID);
 
         //Setup type of application
         if(AUT != null && SUT == null){
             // Native
             File app = new File(AUT);
-            capabilities.setCapability(MobileCapabilityType.APP, app.getAbsolutePath());
+            capabilities.setCapability(APP, app.getAbsolutePath());
+            capabilities.setCapability(APP_PACKAGE, APP_PACK);
+            capabilities.setCapability(APP_ACTIVITY, APP_ACT);
         }
         else if(SUT != null && AUT == null){
             // Web
