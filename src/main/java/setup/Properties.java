@@ -5,7 +5,7 @@ public enum Properties {
      * Enum for building property name with respect to the selected test configuration
      */
     NATIVE ("native"),
-    WEB("web");
+    WEB("webios");
 
     private String currentAppType;
 

@@ -1,7 +1,6 @@
 package setup;
 
 import io.appium.java_client.AppiumDriver;
-import io.appium.java_client.android.AndroidDriver;
 import io.appium.java_client.remote.MobileCapabilityType;
 import org.openqa.selenium.remote.DesiredCapabilities;
 import org.openqa.selenium.support.ui.WebDriverWait;
@@ -9,9 +8,11 @@ import org.openqa.selenium.support.ui.WebDriverWait;
 import java.io.File;
 import java.net.URL;
 
+import static io.appium.java_client.remote.MobileCapabilityType.APP;
+
 // Initialize a driver with test properties
 public class DriverSetup extends TestProperties{
-    private static AndroidDriver driverSingle = null;
+    private static AppiumDriver driverSingle = null;
     private static WebDriverWait waitSingle;
 
     // Properties to be read
@@ -20,6 +21,7 @@ public class DriverSetup extends TestProperties{
     private static String TEST_PLATFORM;
     private static String DRIVER;
     private static String DEVICE_NAME;
+    private static String UDID;
 
 
     protected void prepareDriver() throws Exception {
@@ -29,6 +31,7 @@ public class DriverSetup extends TestProperties{
         AUT = getProp("aut");
         String t_sut = getProp("sut");
         SUT = t_sut == null ? null : "http://"+t_sut;
+        UDID = getProp("udid");
 
         DesiredCapabilities capabilities = new DesiredCapabilities();
         String browserName;
@@ -41,6 +44,7 @@ public class DriverSetup extends TestProperties{
                 break;
             case "iOS":
                 browserName = "Safari";
+                capabilities.setCapability(MobileCapabilityType.UDID, UDID);
                 break;
             default:
                 throw new Exception("Unclear type of mobile platform");
@@ -62,7 +66,7 @@ public class DriverSetup extends TestProperties{
         }
 
         // Init driver with new AppiumDriver object
-        if (driverSingle == null) driverSingle = new AndroidDriver(new URL(DRIVER), capabilities);
+        if (driverSingle == null) driverSingle = new AppiumDriver(new URL(DRIVER), capabilities);
 
         // Set an object to handle timeouts
         if (waitSingle == null) waitSingle = new WebDriverWait(driver(), 10);
@@ -70,7 +74,7 @@ public class DriverSetup extends TestProperties{
     }
 
     //Method to access singleton
-    protected AndroidDriver driver() throws Exception {
+    protected AppiumDriver driver() throws Exception {
         if (driverSingle == null) prepareDriver();
         return driverSingle;
     }
@@ -79,5 +83,3 @@ public class DriverSetup extends TestProperties{
         return waitSingle;
     }
 }
-
-

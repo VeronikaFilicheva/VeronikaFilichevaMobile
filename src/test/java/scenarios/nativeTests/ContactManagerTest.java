@@ -26,7 +26,7 @@ public class ContactManagerTest extends Hooks {
         contactManager.checkElementsDisplayed();
 
         //Check virtual keyboard appears
-        contactManager.checkVirtualKeybordIsShown();
+       // contactManager.checkVirtualKeybordIsShown();
 
     }
 

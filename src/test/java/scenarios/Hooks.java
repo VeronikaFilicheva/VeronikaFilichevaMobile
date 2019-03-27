@@ -20,7 +20,6 @@ public class Hooks extends DriverSetup {
 
     @AfterSuite(description = "Close driver")
     public void tearDown() throws Exception {
-        driver().quit();
+        driver().closeApp();
     }
-
 }
