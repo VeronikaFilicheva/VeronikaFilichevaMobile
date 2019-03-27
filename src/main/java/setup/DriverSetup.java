@@ -8,6 +8,8 @@ import org.openqa.selenium.support.ui.WebDriverWait;
 import java.io.File;
 import java.net.URL;
 
+import static io.appium.java_client.remote.AndroidMobileCapabilityType.APP_ACTIVITY;
+import static io.appium.java_client.remote.AndroidMobileCapabilityType.APP_PACKAGE;
 import static io.appium.java_client.remote.MobileCapabilityType.APP;
 
 // Initialize a driver with test properties
@@ -22,6 +24,8 @@ public class DriverSetup extends TestProperties{
     private static String DRIVER;
     private static String DEVICE_NAME;
     private static String UDID;
+    private static String APP_PACK;
+    private static String APP_ACT;
 
 
     protected void prepareDriver() throws Exception {
@@ -32,6 +36,8 @@ public class DriverSetup extends TestProperties{
         String t_sut = getProp("sut");
         SUT = t_sut == null ? null : "http://"+t_sut;
         UDID = getProp("udid");
+        APP_PACK = getProp("appPackage");
+        APP_ACT = getProp("appActivity");
 
         DesiredCapabilities capabilities = new DesiredCapabilities();
         String browserName;
@@ -40,6 +46,9 @@ public class DriverSetup extends TestProperties{
         switch (TEST_PLATFORM) {
             case "Android":
                 capabilities.setCapability(MobileCapabilityType.DEVICE_NAME, DEVICE_NAME);
+                capabilities.setCapability(APP_ACTIVITY, APP_ACT);
+                capabilities.setCapability(APP_PACKAGE,APP_PACK);
+
                 browserName = "Chrome";
                 break;
             case "iOS":
