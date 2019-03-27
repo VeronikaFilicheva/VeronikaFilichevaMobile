@@ -34,7 +34,7 @@ public class DriverSetup extends TestProperties{
         DRIVER = getProp("driver");
         AUT = getProp("aut");
         String t_sut = getProp("sut");
-        SUT = t_sut == null ? null : "http://"+t_sut;
+        SUT = t_sut == null ? null : "https://"+t_sut;
         UDID = getProp("udid");
         APP_PACK = getProp("appPackage");
         APP_ACT = getProp("appActivity");
