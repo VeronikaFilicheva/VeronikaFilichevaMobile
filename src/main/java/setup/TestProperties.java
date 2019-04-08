@@ -7,7 +7,7 @@ import java.util.Properties;
 
 public class TestProperties {
     String currentPropertyFile;
-    String resourcePath = "C:\\Users\\Veronika_Sarbaeva\\IdeaProjects\\VeronikaFilichevaMobile\\src\\main\\resources\\";
+    String resourcePath = ".\\src\\main\\resources\\";
     Properties currentProps = new Properties();
 
     protected void setPropertyFile(setup.Properties propertyFile) {
